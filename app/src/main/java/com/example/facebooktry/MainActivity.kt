@@ -7,6 +7,8 @@ import com.facebook.FacebookSdk
 import com.facebook.LoggingBehavior
 import com.facebook.appevents.AppEventsConstants
 import com.facebook.appevents.AppEventsLogger
+import java.math.BigDecimal
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,13 +26,24 @@ class MainActivity : AppCompatActivity() {
 
         facebookLogger = AppEventsLogger.newLogger(this)
 
-        binding.triggerEvent.setOnClickListener {
+        binding.triggerAddToCartEvent.setOnClickListener {
             val facebookParams = Bundle().apply {
                 putString(AppEventsConstants.EVENT_PARAM_CURRENCY, "UAH")
                 putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, "121")
                 putString(AppEventsConstants.EVENT_PARAM_CONTENT, "[{\"id\": \"121\", \"quantity\": 2}]")
             }
             facebookLogger.logEvent(AppEventsConstants.EVENT_NAME_ADDED_TO_CART, 129.0, facebookParams)
+        }
+
+        binding.triggerCheckoutEvent.setOnClickListener {
+            val params = Bundle().apply {
+                putString(AppEventsConstants.EVENT_PARAM_CURRENCY, "UAH")
+            }
+            facebookLogger.logEvent(AppEventsConstants.EVENT_NAME_INITIATED_CHECKOUT, 129.0, params)
+        }
+
+        binding.triggerPurchaseEvent.setOnClickListener {
+            facebookLogger.logPurchase(BigDecimal(1), Currency.getInstance("UAH"))
         }
 
 

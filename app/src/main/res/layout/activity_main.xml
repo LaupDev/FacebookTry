@@ -7,13 +7,31 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/trigger_event"
+        android:id="@+id/trigger_add_to_cart_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="ADD TO CART"
+        app:layout_constraintBottom_toTopOf="@id/trigger_checkout_event"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/trigger_checkout_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CHECKOUT"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trigger_add_to_cart_event"
+        app:layout_constraintBottom_toTopOf="@id/trigger_purchase_event"/>
+    <Button
+        android:id="@+id/trigger_purchase_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PURCHASE"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trigger_checkout_event"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
